@@ -73,4 +73,4 @@ Then open `http://localhost:3000` in your browser.
 
 Spell and rules data comes from the [D&D 5e API](https://www.dnd5eapi.co/), which uses content from the 5th Edition System Reference Document (SRD).
 
-Dungeons & Dragons is a trademark of Wizards of the Coast. This is an unofficial student project and is not affiliated with Wizards of the Coast.
+> Dungeons & Dragons is a trademark of Wizards of the Coast. This is an unofficial student project and is not affiliated with Wizards of the Coast.
