@@ -34,9 +34,7 @@ DnD-Visionary/
 └── docs/       # SRS, API contract, diagrams
 ```
 
-## Getting Started
-
-### Prerequisites
+## Prerequisites
 
 - [Git](https://git-scm.com/)
 - [Node.js](https://nodejs.org/) (LTS version)
