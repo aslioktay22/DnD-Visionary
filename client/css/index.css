@@ -1,0 +1,34 @@
+body {
+  color: #fef78d;
+}
+
+background {
+  background-color: #48327fff;
+}
+
+#welcome {
+  background-color: #48327fff;
+  color: #fef78d;
+}
+
+#loginRegister {
+  background-color: #48327fff;
+  color: #fef78d;
+
+}
+
+.login {
+  background-color: #48327fff;
+  color: #fef78d;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.register {
+  background-color: #48327fff;
+  color: #fef78d;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
