@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DnD Visionary Login</title>
+</head>
+
+<body>
+
+  <div class="login">
+    <h2>Login</h2>
+    <form id="loginForm">
+        <div class="inputGroup">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="inputGroup">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Login</button>
+        <p id="loginError" style="color: red; display: none;">Invalid username or password.</p>
+    </form>
+  </div>
+
+  <script>
+      document.getElementById('loginForm').addEventListener('submit', function(event) {
+          event.preventDefault(); // Prevents the form from refreshing the page
+
+          const username = document.getElementById('username').value;
+          const password = document.getElementById('password').value;
+          const errorMessage = document.getElementById('loginError');
+
+          if (username === "admin" && password === "1234") {
+              window.location.href = "main.html";
+          } else {
+              errorMessage.style.display = "block";
+          }
+      });
+  </script>
+
+  <div class="register">
+    <h2>Register</h2>
+    <form id="registerForm">
+      <div class="inputGroup">
+        <label for="regUsername">Username:</label>
+        <input type="text" id="regUsername" name="regUsername" required>
+      </div>
+      <div class="inputGroup">
+        <label for="regEmail">Email:</label>
+        <input type="email" id="regEmail" name="regEmail" required>
+      </div>
+      <div class="inputGroup">
+        <label for="regPassword">Password:</label>
+        <input type="password" id="regPassword" name="regPassword" required>
+      </div>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+</body>
+</html>
