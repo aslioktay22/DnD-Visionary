@@ -1,4 +1,5 @@
-// This is to make sure the code button has some necessary functions!
+/* This makes sure that the code is formatted correctly when someone enters letters
+in lowercase, and gives an error with a clear message if the length/format isn't right. */
 
 const codeInput = document.getElementById("session-code");
 const joinForm = codeInput.closest("form");
