@@ -1,4 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Spectral+SC:wght@500;600&family=Spectral:wght@400;500&family=Lexend:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Lexend:wght@400;500;600;700&display=swap");
+
+button, input, select, textarea { font: inherit; }
 
 :root {
   --color-1: #D4C9EF;
@@ -17,7 +19,7 @@
   --muted: #EFE9FA;
   --shadow: 0 4px 8px rgba(20, 10, 40, 0.45);
 
-  --font-heading: "Spectral SC", Georgia, serif;
+  --font-heading: "Spectral", Georgia, serif;
   --font-body: "Spectral", Georgia, serif;
   --font-button: "Lexend", system-ui, sans-serif;
 }
@@ -55,7 +57,7 @@ a:hover { color: var(--color-1); }
   align-items: flex-start;
   gap: 4px;
   font-family: var(--font-heading);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 40px;
   color: var(--yellow);
   text-decoration: none;
@@ -418,6 +420,354 @@ body:has(.login) .button button:hover { background: #FFFBC2; }
 /* --------------- PAGE: CHARACTER-SHEET --------------- */
 /* --------------- PAGE: CHARACTER --------------- */
 /* --------------- PAGE: DATABASE --------------- */
+
+.page-database [hidden] { display: none !important; }
+
+/* the page fills the screen and only the content area scrolls */
+body.page-database {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.page-database .site-header {
+  flex: none;
+  position: relative;
+  z-index: 1;
+}
+
+/* page title */
+.page-database .db-title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 44px;
+  text-shadow: 0 2px 4px rgba(20, 10, 40, 0.45);
+}
+
+.db-title:focus { outline: none; }
+
+.page-database .site-nav { gap: 32px; }
+
+.page-database .site-nav .pill {
+  justify-content: center;
+  min-width: 128px;
+  min-height: 50px;
+  padding: 0 22px;
+  font-size: 20px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.page-database .pill:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 2px;
+}
+
+/* search bar & the black line under it */
+.db-search {
+  flex: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 36px;
+  padding: 58px 32px 42px clamp(24px, 11vw, 136px);
+  border-bottom: 6px solid #0B0618;
+}
+
+.db-search .input {
+  flex: 0 1 540px;
+  min-width: 0;
+  min-height: 50px;
+  font-weight: 500;
+}
+
+.db-search-btn { min-width: 128px; }
+
+/* scrolling content area */
+.db-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  margin-right: 22px;
+  padding: 44px 24px 64px;
+}
+
+.db-content > * {
+  max-width: 1110px;
+  margin-inline: auto;
+}
+
+.db-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  font-family: var(--font-button);
+  font-size: 18px;
+  color: var(--muted);
+}
+
+/* purple buttons */
+.db-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(176px, 1fr));
+  gap: 62px 26px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.db-grid > li { display: flex; }
+.db-grid .db-tile { flex: 1; }
+
+.db-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 6px 16px;
+  background: var(--panel);
+  border: 1px solid #6E6290;
+  border-radius: 6px;
+  box-shadow: 0 3px 5px rgba(20, 10, 40, 0.35);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 22px;
+  line-height: 1.15;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.db-tile:hover {
+  background: var(--panel-edge);
+  color: var(--text);
+}
+
+.db-tile:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 2px;
+}
+
+span.db-tile { cursor: default; }
+
+/* small label on search results */
+.db-tile-tag {
+  margin-top: 3px;
+  font-family: var(--font-button);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--yellow);
+}
+
+.db-retry { font-size: 18px; }
+
+/* detail page cards */
+.db-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 352px));
+  justify-content: center;
+  gap: 56px 120px;
+  padding-top: 40px;
+}
+
+.db-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--panel);
+  border: 1px solid #6E6290;
+  border-radius: 40px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.db-card-text { grid-column: 1 / -1; }
+
+.db-card-head {
+  padding: 40px 28px 14px;
+  border-bottom: 1px solid #120A24;
+}
+
+.db-card-title {
+  margin: 0;
+  font-family: var(--font-button);
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.2;
+}
+
+.db-card-sub {
+  margin: 6px 0 0;
+  font-family: var(--font-button);
+  font-size: 15px;
+  color: var(--yellow);
+}
+
+.db-card-body {
+  flex: 1;
+  max-height: 220px;
+  margin: 22px 22px 26px 28px;
+  padding-right: 22px;
+  overflow-y: auto;
+}
+
+.db-card-text .db-card-body {
+  max-height: 440px;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+.db-card-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-button);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.4;
+}
+
+.db-card-text .db-card-list { font-size: 18px; margin-bottom: 8px; }
+
+.db-fact-label { color: var(--yellow); }
+
+.db-card a {
+  color: inherit;
+  text-decoration: underline dotted 1px;
+  text-decoration-color: rgba(255, 255, 255, 0.45);
+  text-underline-offset: 4px;
+}
+
+.db-card a:hover {
+  color: var(--yellow);
+  text-decoration-color: currentColor;
+}
+
+.db-card-body p { margin: 0 0 12px; }
+
+.db-card-body ul:not(.db-card-list) {
+  margin: 0 0 12px;
+  padding-left: 22px;
+}
+
+.db-subhead {
+  margin: 20px 0 6px;
+  font-family: var(--font-button);
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--yellow);
+}
+
+.db-card-body > .db-subhead:first-child { margin-top: 0; }
+
+.db-table-wrap {
+  margin: 0 0 14px;
+  overflow-x: auto;
+}
+
+.db-card-body table {
+  border-collapse: collapse;
+  font-size: 16px;
+}
+
+.db-card-body th,
+.db-card-body td {
+  padding: 6px 12px;
+  border: 1px solid var(--panel-edge);
+  text-align: left;
+}
+
+.db-card-body th {
+  background: var(--panel-edge);
+  font-family: var(--font-button);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.db-card-image {
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.db-card-image img {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 24px;
+}
+
+/* lilac(?) scrollbars */
+.db-content::-webkit-scrollbar,
+.db-card-body::-webkit-scrollbar { width: 22px; }
+
+.db-content::-webkit-scrollbar-track,
+.db-card-body::-webkit-scrollbar-track {
+  background: var(--color-1);
+  border: 1px solid #F4F0FB;
+  border-radius: 4px;
+}
+
+.db-content::-webkit-scrollbar-track { margin-block: 30px; }
+
+.db-content::-webkit-scrollbar-thumb,
+.db-card-body::-webkit-scrollbar-thumb {
+  background: var(--color-2);
+  border: 1px solid #F4F0FB;
+  border-radius: 4px;
+}
+
+/* the way Firefox gets the colors since it doesn't work otherwise */
+@supports not selector(::-webkit-scrollbar) {
+  .db-content,
+  .db-card-body { scrollbar-color: var(--color-2) var(--color-1); }
+}
+
+/* for other devices */
+@media (max-width: 800px) {
+  body.page-database {
+    display: block;
+    height: auto;
+    overflow: visible;
+  }
+  .page-database .db-title { font-size: 32px; }
+  .page-database .site-nav { gap: 12px; }
+  .page-database .site-nav .pill {
+    min-width: 0;
+    min-height: 44px;
+    font-size: 16px;
+  }
+  .db-search {
+    gap: 16px;
+    padding: 28px 16px;
+  }
+  .db-search .input { flex: 1 1 100%; }
+  .db-content {
+    overflow: visible;
+    margin: 0;
+    padding: 28px 16px 48px;
+  }
+  .db-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 20px 14px;
+  }
+  .db-tile { font-size: 19px; }
+  .db-cards {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-top: 8px;
+  }
+  .db-card { border-radius: 28px; }
+  .db-card-head { padding: 26px 22px 12px; }
+  .db-card-title { font-size: 24px; }
+  .db-card-list { font-size: 19px; }
+}
+
 /* --------------- PAGE: DICE --------------- */
 /* --------------- PAGE: INITIATIVE --------------- */
 
