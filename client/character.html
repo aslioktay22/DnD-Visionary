@@ -5,8 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Characters · D&amp;D: Visionary</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
+    <header class="site-header">
+        <a href="main.html" class="logo" data-text="My Characters">
+        My Characters
+        <svg class="sparkles" viewBox="0 0 34 30" aria-hidden="true">
+            <path d="M12 0l2 9 9 2-9 2-2 9-2-9-9-2 9-2z"></path>
+            <path d="M27 14l1 4 4 1-4 1-1 4-1-4-4-1 4-1z"></path>
+        </svg>
+        </a>
+
+        <nav class="site-nav" aria-label="Main">
+        <a href="main.html" class="pill">Dashboard</a>
+        </nav>
+    </header>
+    <main>
+        <!-- Character Card Container -->
+        <section></section>
+        <div>
+            <a href="character-builder.html" class="btn-yellow">CREATE A CHARACTER</a>
+        </div>
+
+    </main>
+    <!-- Character Card Template -->
+    <template id="character-card-template"> <!-- Will need to add this -->
+        <article class="card-characters">
+            <div>
+                <img src="" alt="">
+                <div>
+                    <h2></h2>
+                    <p></p>
+                </div>
+            </div>
+            <div>
+                <a href="#">View</a>
+                <a href="#">Edit</a>
+                <button type="button">Delete</button>
+            </div>
+        </article>
+    </template>
+    <script src="js/character.js" defer></script>
 </body>
 </html>
